@@ -39,6 +39,7 @@ public OnPluginStart()
 
 	CreateConVar("l4d2_iammo_version", PLUGIN_VERSION, "L4D2 无限子弹 版本", FCVAR_PLUGIN|FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY|FCVAR_DONTRECORD);
 	IAmmo = CreateConVar("l4d2_iammo_enable", "2", "是否开启无限子弹? 0=关闭 1=开启 2=所有人", FCVAR_PLUGIN|FCVAR_NOTIFY, true, 0.0, true, 2.0);
+	AllowNm = CreateConVar("l4d2_iammo_normal", "0", "是否开启普通枪械无限子弹? 0=关闭 1=开启 2=只开启改功能关闭其余", FCVAR_PLUGIN|FCVAR_NOTIFY, true, 0.0, true, 2.0);
 	AllowGL = CreateConVar("l4d2_iammo_gl", "1", "是否开启榴弹发射器无限子弹? 0=关闭 1=开启 2=只开启改功能关闭其余", FCVAR_PLUGIN|FCVAR_NOTIFY, true, 0.0, true, 2.0);
 	AllowM60 = CreateConVar("l4d2_iammo_m60", "1", "是否开启M60无限子弹? 0=关闭 1=开启 2=只开启改功能关闭其余", FCVAR_PLUGIN|FCVAR_NOTIFY, true, 0.0, true, 2.0);
 	AllowChainsaw = CreateConVar("l4d2_iammo_chainsaw", "1", "是否开启电锯无限子弹? 0=关闭 1=开启 2=只开启改功能关闭其余", FCVAR_PLUGIN|FCVAR_NOTIFY, true, 0.0, true, 2.0);
@@ -60,6 +61,7 @@ public OnPluginStart()
 	HookEvent("weapon_drop", Event_WeaponDrop);
 	HookEvent("player_disconnect", Event_PlayerDisconnect);
 	HookConVarChange(IAmmo, IAmmoChanged);
+	HookConVarChange(AllowNm, AllowNmChanged);
 	HookConVarChange(AllowGL, AllowGLChanged);
 	HookConVarChange(AllowM60, AllowM60Changed);
 	HookConVarChange(AllowChainsaw, AllowChainsawChanged);
@@ -337,7 +339,18 @@ public DisplayIAConfigMenu(client)
 		Format(name, sizeof(name), "禁用无限子弹");
 		AddMenuItem(menu, name, name);
 	}
-
+	
+	if (GetConVarInt(AllowNm) == 0)
+	{
+		Format(name, sizeof(name), "启用普通枪械无限子弹");
+		AddMenuItem(menu, name, name);
+	}
+	else
+	{
+		Format(name, sizeof(name), "禁用普通枪械无限子弹");
+		AddMenuItem(menu, name, name);
+	}
+	
 	if (GetConVarInt(AllowGL) == 0)
 	{
 		Format(name, sizeof(name), "启用榴弹发射器无限子弹");
@@ -468,6 +481,16 @@ public MenuHandler_IAConfigMenu(Handle:menu, MenuAction:action, client, param)
 			SetConVarInt(IAmmo, 0);
 			PrintToChat(client,"[SM] 无限子弹 Cvar 禁用");
 		}
+		else if (StrContains(name, "启用普通枪械无限子弹", false) != -1)
+		{
+			SetConVarInt(AllowNm, 1);
+			PrintToChat(client,"[SM] 普通枪械无限子弹 Cvar 启用");
+		}
+		else if (StrContains(name, "禁用普通枪械无限子弹", false) != -1)
+		{
+			SetConVarInt(AllowNm, 0);
+			PrintToChat(client,"[SM] 普通枪械无限子弹 Cvar 禁用");
+		}
 		else if (StrContains(name, "启用榴弹发射器无限子弹", false) != -1)
 		{
 			SetConVarInt(AllowGL, 1);
@@ -595,6 +618,33 @@ public IAmmoChanged(Handle:convar, const String:oldValue[], const String:newValu
 		}
 	}
 }
+public AllowNmChanged(Handle:convar, const String:oldValue[], const String:newValue[])
+{
+	if (convar == AllowNm)
+	{
+		new oldval = StringToInt(oldValue);
+		new newval = StringToInt(newValue);
+		
+		if (newval == oldval) 
+			return;
+		
+		if (newval < 0 || newval > 2)
+		{
+			SetConVarInt(AllowNm, oldval);
+		}
+		else if (newval == 2)
+		{
+			SetConVarInt(AllowGL, 0);
+			SetConVarInt(AllowM60, 0);
+			SetConVarInt(AllowChainsaw, 0);
+			SetConVarInt(AllowThrowables, 0);
+			SetConVarInt(AllowMeds, 0);
+			SetConVarInt(AllowDefibs, 0);
+			SetConVarInt(AllowPills, 0);
+			SetConVarInt(AllowShots, 0);
+		}
+	}
+}
 public AllowGLChanged(Handle:convar, const String:oldValue[], const String:newValue[])
 {
 	if (convar == AllowGL)
@@ -611,6 +661,7 @@ public AllowGLChanged(Handle:convar, const String:oldValue[], const String:newVa
 		}
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowM60, 0);
 			SetConVarInt(AllowChainsaw, 0);
 			SetConVarInt(AllowThrowables, 0);
@@ -637,6 +688,7 @@ public AllowM60Changed(Handle:convar, const String:oldValue[], const String:newV
 		}		
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowGL, 0);
 			SetConVarInt(AllowChainsaw, 0);
 			SetConVarInt(AllowThrowables, 0);
@@ -663,6 +715,7 @@ public AllowChainsawChanged(Handle:convar, const String:oldValue[], const String
 		}
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowGL, 0);
 			SetConVarInt(AllowM60, 0);
 			SetConVarInt(AllowThrowables, 0);
@@ -689,6 +742,7 @@ public AllowThrowablesChanged(Handle:convar, const String:oldValue[], const Stri
 		}
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowGL, 0);
 			SetConVarInt(AllowM60, 0);
 			SetConVarInt(AllowChainsaw, 0);
@@ -729,6 +783,7 @@ public AllowMedsChanged(Handle:convar, const String:oldValue[], const String:new
 		}
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowGL, 0);
 			SetConVarInt(AllowM60, 0);
 			SetConVarInt(AllowThrowables, 0);
@@ -755,6 +810,7 @@ public AllowDefibsChanged(Handle:convar, const String:oldValue[], const String:n
 		}
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowGL, 0);
 			SetConVarInt(AllowM60, 0);
 			SetConVarInt(AllowThrowables, 0);
@@ -781,6 +837,7 @@ public AllowPillsChanged(Handle:convar, const String:oldValue[], const String:ne
 		}
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowGL, 0);
 			SetConVarInt(AllowM60, 0);
 			SetConVarInt(AllowThrowables, 0);
@@ -807,6 +864,7 @@ public AllowShotsChanged(Handle:convar, const String:oldValue[], const String:ne
 		}
 		else if (newval == 2)
 		{
+			SetConVarInt(AllowNm, 0);
 			SetConVarInt(AllowGL, 0);
 			SetConVarInt(AllowM60, 0);
 			SetConVarInt(AllowThrowables, 0);
@@ -968,24 +1026,10 @@ public Action:Event_WeaponDrop(Handle:event, const String:name[], bool:dontBroad
 
 public CheckForOnlyOn()
 {
-	if (GetConVarInt(AllowGL) == 2)
-		return true;
-	else if (GetConVarInt(AllowM60) == 2)
-		return true;
-	else if (GetConVarInt(AllowChainsaw) == 2)
-		return true;
-	else if (GetConVarInt(AllowThrowables) == 2)
-		return true;
-	else if (GetConVarInt(AllowMeds) == 2)
-		return true;
-	else if (GetConVarInt(AllowDefibs) == 2)
-		return true;
-	else if (GetConVarInt(AllowPills) == 2)
-		return true;
-	else if (GetConVarInt(AllowShots) == 2)
-		return true;
-	else
+	if (GetConVarInt(AllowNm) > 0)
 		return false;
+	else
+		return true;
 }
 
 public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroadcast)
