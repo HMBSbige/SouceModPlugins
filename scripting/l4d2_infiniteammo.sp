@@ -6,7 +6,7 @@
 #include <adminmenu>
 
 #define MaxClients 32
-#define PLUGIN_VERSION "1.5.5"
+#define PLUGIN_VERSION "1.5.6"
 
 public Plugin:myinfo =
 {
@@ -20,6 +20,7 @@ public Plugin:myinfo =
 new InfiniteAmmo[MaxClients+1];
 new Throwing[MaxClients+1];
 new Handle:IAmmo = INVALID_HANDLE;
+new Handle:AllowNm = INVALID_HANDLE;
 new Handle:AllowGL = INVALID_HANDLE;
 new Handle:AllowM60 = INVALID_HANDLE;
 new Handle:AllowChainsaw = INVALID_HANDLE;
@@ -1023,15 +1024,6 @@ public Action:Event_WeaponDrop(Handle:event, const String:name[], bool:dontBroad
 		}
 	}
 }
-
-public CheckForOnlyOn()
-{
-	if (GetConVarInt(AllowNm) > 0)
-		return false;
-	else
-		return true;
-}
-
 public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroadcast)
 {
 	new String:weapon[64];
@@ -1062,7 +1054,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "pumpshotgun") || StrEqual(weapon, "shotgun_chrome"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 8;
@@ -1070,7 +1062,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "autoshotgun") || StrEqual(weapon, "shotgun_spas"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 10;
@@ -1078,7 +1070,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "hunting_rifle") || StrEqual(weapon, "sniper_scout"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 15;
@@ -1086,7 +1078,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "sniper_awp"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 20;
@@ -1094,7 +1086,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "sniper_military"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 30;
@@ -1102,7 +1094,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "rifle_ak47"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 40;
@@ -1110,7 +1102,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "smg") || StrEqual(weapon, "smg_silenced") || StrEqual(weapon, "smg_mp5") || StrEqual(weapon, "rifle") || StrEqual(weapon, "rifle_sg552"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 50;
@@ -1118,7 +1110,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "rifle_desert"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 0;
 						clipsize = 60;
@@ -1134,7 +1126,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "pistol"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 1;
 						if (GetEntProp(GetPlayerWeaponSlot(client, 1), Prop_Send, "m_isDualWielding") > 0)
@@ -1145,7 +1137,7 @@ public Action:Event_WeaponFire(Handle:event, const String:name[], bool:dontBroad
 				}
 				else if (StrEqual(weapon, "pistol_magnum"))
 				{
-					if (!CheckForOnlyOn())
+					if (GetConVarInt(AllowNm) > 0 || IsAdminOverride(client))
 					{
 						slot = 1;
 						clipsize = 8;
