@@ -658,7 +658,7 @@ public Action:Menu_CreateWeaponMenu(client, args) {
 	SetMenuTitle(menu, "Spawn Weapons");
 	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
-	AddMenuItem(menu, "sp", "手枪");
+	AddMenuItem(menu, "sp", "M60");
 	AddMenuItem(menu, "sg", "马格南");
 	AddMenuItem(menu, "ss", "木喷M870");
 	AddMenuItem(menu, "sa", "M1014");
@@ -678,7 +678,7 @@ public Menu_SpawnWeaponHandler(Handle:menu, MenuAction:action, cindex, itempos) 
 	if (action == MenuAction_Select) {
 		switch (itempos) {
 			case 0: {
-				Do_SpawnItem(cindex, "pistol");
+				Do_SpawnItem(cindex, "rifle_m60");
 			} case 1: {
 				Do_SpawnItem(cindex, "pistol_magnum");
 			} case 2: {
