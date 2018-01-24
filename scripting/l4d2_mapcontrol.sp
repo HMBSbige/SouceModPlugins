@@ -36,7 +36,7 @@ public void OnMapStart()
 		ig_coop = 1;
 	}
 	
-	CreateTimer(10.0, Outtickrate);
+	CreateTimer(30.0, Outtickrate);
 }
 
 public Action Outtickrate(Handle timer)
@@ -47,10 +47,9 @@ public Action Outtickrate(Handle timer)
 
 public Action:Command_GetTickrate(client, args)
 {
-    tickrate = 1.0 / GetTickInterval();
-
-    ReplyToCommand(client, "服务器 tickrate : %d", RoundToZero(tickrate));
-    return Plugin_Handled;
+	tickrate = 1.0 / GetTickInterval();
+	PrintToChatAll("服务器 tickrate : %d", RoundToZero(tickrate));
+	return Plugin_Handled;
 }
 
 public Action HxTimerNextMap(Handle timer)
