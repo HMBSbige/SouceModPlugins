@@ -82,7 +82,7 @@ public OnPluginStart()
 	RegConsoleCmd("sm_join", TakeOverMe);
 
 	RegConsoleCmd("sm_afk", GoAwayFromKeyboard);
-	RegConsoleCmd("sm_idle", GoAwayFromKeyboard);
+	RegConsoleCmd("sm_away", GoAwayFromKeyboard);
 	RegConsoleCmd("sm_spectate", GoAwayFromKeyboard);
 }
 
