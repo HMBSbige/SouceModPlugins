@@ -21,10 +21,10 @@ new kill_counts[MAXPLAYERS+1][3];
 
 public OnPluginStart() {
 	//create new cvars
-	broadcast = CreateConVar("l4d_broadcast_kill", "1", "0: 关闭. 1: 开启. 2: 仅爆头.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,2.0);
-	broadcast_con = CreateConVar("l4d_broadcast_con", "0", "显示在控制台 0: 关闭 1: 开启",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
-	broadcast_attack = CreateConVar("l4d_broadcast_ff", "2", "显示给攻击者或在聊天框显示. 0: 关闭 1: Hint 2: Hint + Chat 3: Chat",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,3.0);
-	broadcast_victim = CreateConVar("l4d_broadcast_hit", "0", "显示给被攻击者. 0: 关闭 1: 开启",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
+	broadcast = CreateConVar("l4d_broadcast_kill", "1", "0: 关闭 1: 开启 2: 仅爆头.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,2.0);
+	broadcast_con = CreateConVar("l4d_broadcast_con", "0", "显示在控制台 0: 关闭 1: 开启.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
+	broadcast_attack = CreateConVar("l4d_broadcast_ff", "2", "显示给攻击者或在聊天框显示 0: 关闭 1: Hint 2: Hint + Chat 3: Chat.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,3.0);
+	broadcast_victim = CreateConVar("l4d_broadcast_hit", "0", "显示给被攻击者 0: 关闭 1: 开启.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
 	
 	//hook events
 	HookEvent("player_hurt", Event_Player_Hurt, EventHookMode_Post);
@@ -123,31 +123,31 @@ public Action:Event_Player_Hurt(Handle:event, const String:name[], bool:dontBroa
 	{
 		case 1:
 		{
-			hit="的 头部";
+			hit="头部";
 		}
 		case 2:
 		{
-			hit="的 胸部";
+			hit="胸部";
 		}
 		case 3:
 		{
-			hit="的 肚子";
+			hit="肚子";
 		}
 		case 4:
 		{
-			hit="的 左手";
+			hit="左手";
 		}
 		case 5:
 		{
-			hit="的 右手";
+			hit="右手";
 		}
 		case 6:
 		{
-			hit="的 左脚";
+			hit="左脚";
 		}
 		case 7:
 		{
-			hit="的 右脚";
+			hit="右脚";
 		}
 		default:
 		{}
@@ -164,21 +164,20 @@ public Action:Event_Player_Hurt(Handle:event, const String:name[], bool:dontBroa
 	
 	if (ff_attack == 2 || ff_attack == 3)
 	{
-		PrintToChatAll("%N 误伤了 %N%s.", attacker,client, hit);
+		PrintToChatAll("\x03%N\x01 误伤了 \x05%N\x01 的 \x04%s\x01.", attacker,client, hit);
 	}
 	else if (ff_con == 1)
 	{
-		PrintToConsole(attacker, "你误伤了 %N%s.", client, hit);
+		PrintToConsole(attacker, "你误伤了 %N 的 %s.", client, hit);
 	}
-	
-	ReplaceString(hit, 32, "'s", "");
+
 	if (ff_victim == 1)
 	{
-		PrintToChat(client, "%N 误伤了你的%s.", attacker, hit);
+		PrintToChat(client, "\x03%N\x01 误伤了你的 \x04%s\x01.", attacker, hit);
 	}
 	else if (ff_con == 1)
 	{
-		PrintToConsole(client, "%N 误伤了你的%s.", attacker, hit);
+		PrintToConsole(client, "%N 误伤了你的 %s.", attacker, hit);
 	}
 	
 	return Plugin_Continue;
