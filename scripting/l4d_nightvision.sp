@@ -20,7 +20,7 @@ public Plugin:myinfo =
 public OnPluginStart()
 {
 	RegConsoleCmd("sm_nightvision", sm_nightvision);
-	l4d_nt_team = CreateConVar("l4d_nt_team", "1", " 0:禁用, 1:启用, 2:仅幸存者启用, 3:仅感染者启用", FCVAR_PLUGIN);	
+	l4d_nt_team = CreateConVar("l4d_nt_team", "1", "0:禁用 1:启用 2:仅幸存者启用 3:仅感染者启用", FCVAR_PLUGIN);	
 	AutoExecConfig(true, "l4d_nightvision"); 
 	HookConVarChange(l4d_nt_team, ConVarChange);
 	GetConVar();

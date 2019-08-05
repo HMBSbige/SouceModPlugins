@@ -21,10 +21,10 @@ new kill_counts[MAXPLAYERS+1][3];
 
 public OnPluginStart() {
 	//create new cvars
-	broadcast = CreateConVar("l4d_broadcast_kill", "1", "0: 关闭 1: 开启 2: 仅爆头.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,2.0);
-	broadcast_con = CreateConVar("l4d_broadcast_con", "0", "显示在控制台 0: 关闭 1: 开启.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
-	broadcast_attack = CreateConVar("l4d_broadcast_ff", "2", "显示给攻击者或在聊天框显示 0: 关闭 1: Hint 2: Hint + Chat 3: Chat.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,3.0);
-	broadcast_victim = CreateConVar("l4d_broadcast_hit", "0", "显示给被攻击者 0: 关闭 1: 开启.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
+	broadcast = CreateConVar("l4d_broadcast_kill", "1", "0: 关闭 1: 开启 2: 仅爆头",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,2.0);
+	broadcast_con = CreateConVar("l4d_broadcast_con", "0", "显示在控制台 0: 关闭 1: 开启",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
+	broadcast_attack = CreateConVar("l4d_broadcast_ff", "2", "显示给攻击者或在聊天框显示 0: 关闭 1: Hint 2: Hint + Chat 3: Chat",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,3.0);
+	broadcast_victim = CreateConVar("l4d_broadcast_hit", "0", "显示给被攻击者 0: 关闭 1: 开启",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
 	
 	//hook events
 	HookEvent("player_hurt", Event_Player_Hurt, EventHookMode_Post);
@@ -159,25 +159,25 @@ public Action:Event_Player_Hurt(Handle:event, const String:name[], bool:dontBroa
 	
 	if ((ff_attack == 1 || ff_attack == 2) && (id != client))
 	{
-		PrintHintText(attacker, "你误伤了 %N.", client);
+		PrintHintText(attacker, "你误伤了 %N", client);
 	}
 	
 	if (ff_attack == 2 || ff_attack == 3)
 	{
-		PrintToChatAll("\x03%N\x01 误伤了 \x05%N\x01 的 \x04%s\x01.", attacker,client, hit);
+		PrintToChatAll("\x03%N\x01 误伤了 \x05%N\x01 的 \x04%s\x01", attacker,client, hit);
 	}
 	else if (ff_con == 1)
 	{
-		PrintToConsole(attacker, "你误伤了 %N 的 %s.", client, hit);
+		PrintToConsole(attacker, "你误伤了 %N 的 %s", client, hit);
 	}
 
 	if (ff_victim == 1)
 	{
-		PrintToChat(client, "\x03%N\x01 误伤了你的 \x04%s\x01.", attacker, hit);
+		PrintToChat(client, "\x03%N\x01 误伤了你的 \x04%s\x01", attacker, hit);
 	}
 	else if (ff_con == 1)
 	{
-		PrintToConsole(client, "%N 误伤了你的 %s.", attacker, hit);
+		PrintToConsole(client, "%N 误伤了你的 %s", attacker, hit);
 	}
 	
 	return Plugin_Continue;
