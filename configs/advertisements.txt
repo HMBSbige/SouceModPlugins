@@ -1,0 +1,48 @@
+// Advertisements 2.0
+// by Tsunami
+//
+// Types
+// -----
+// center: Center message
+// chat: Chat message
+// hint: Hint message
+// menu: Menu message
+// top: Top message
+//
+// Flags (optional)
+// -----
+// Accepts flags of admins that will not see the advertisement.
+// When omitted everyone will see the advertisement.
+// When left empty only admins will see the advertisement.
+
+// Rikka0w0`s note: 
+// 1. Valid color value in L4D2: {default}, {yellow}, {green}, {lightgreen}
+// 2. "top" mode is not available in L4D2
+
+"Advertisements"
+{
+    "1"
+    {
+        "center"		"www.domain.com"
+    }
+    "2"
+    {
+        "center"		"contact@domain.com"
+        "hint"			"contact@domain.com"
+    }
+    "3"
+    {
+        "menu"			"Next map is {sm_nextmap} in {timeleft} minutes."
+        "flags"			"cft"
+    }
+    "4"
+    {
+        "chat"			"{green}Current {lightgreen}Map: {default}{currentmap}"
+        "flags"			"z"
+    }
+    "5"
+    {
+        "top"				"{orange}Admins: friendly fire is {mp_friendlyfire}."
+        "flags"			""
+    }
+}
