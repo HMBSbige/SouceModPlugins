@@ -1,0 +1,63 @@
+"Phrases"
+{
+	"Gave"
+	{
+		"zho"			"拿"
+	}
+	"Grabbed"
+	{
+		"zho"			"取得"
+	}
+	"Switched"
+	{
+		"zho"			"更換"
+	}
+	"From"
+	{
+		"zho"			"來自"
+	}
+	"To"
+	{
+		"zho"			"給"
+	}
+	"With"
+	{
+		"zho"			"給"
+	}
+	"weapon_molotov"
+	{
+		"zho"			"汽油彈"
+	}
+	"weapon_pipe_bomb"
+	{
+		"zho"			"鐵管炸彈"
+	}
+	"weapon_vomitjar"
+	{
+		"zho"			"膽汁罐"
+	}
+	"weapon_first_aid_kit"
+	{
+		"zho"			"急救包"
+	}
+	"weapon_pain_pills"
+	{
+		"zho"			"止痛藥"
+	}
+	"weapon_adrenaline"
+	{
+		"zho"			"腎上腺素"
+	}
+	"weapon_upgradepack_explosive"
+	{
+		"zho"			"高爆彈藥包"
+	}
+	"weapon_upgradepack_incendiary"
+	{
+		"zho"			"燃燒彈藥包"
+	}
+	"weapon_defibrillator"
+	{
+		"zho"			"電擊器"
+	}
+}

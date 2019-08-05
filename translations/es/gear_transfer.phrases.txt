@@ -1,0 +1,63 @@
+﻿"Phrases"
+{
+	"Gave"
+	{
+		"es"			"dió"
+	}
+	"Grabbed"
+	{
+		"es"			"cogió"
+	}
+	"Switched"
+	{
+		"es"			"cambió"
+	}
+	"From"
+	{
+		"es"			"de"
+	}
+	"To"
+	{
+		"es"			"a"
+	}
+	"With"
+	{
+		"es"			"con"
+	}
+	"weapon_molotov"
+	{
+		"es"			"un molotov"
+	}
+	"weapon_pipe_bomb"
+	{
+		"es"			"una bomba"
+	}
+	"weapon_vomitjar"
+	{
+		"es"			"vómito"
+	}
+	"weapon_first_aid_kit"
+	{
+		"es"			"un kit médico"
+	}
+	"weapon_pain_pills"
+	{
+		"es"			"pastillas"
+	}
+	"weapon_adrenaline"
+	{
+		"es"			"adrenalina"
+	}
+	"weapon_upgradepack_explosive"
+	{
+		"es"			"munición explosiva"
+	}
+	"weapon_upgradepack_incendiary"
+	{
+		"es"			"munición incendiaria"
+	}
+	"weapon_defibrillator"
+	{
+		"es"			"un desfibrilador"
+	}
+}

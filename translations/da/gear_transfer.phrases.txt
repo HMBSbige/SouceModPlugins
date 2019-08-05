@@ -1,0 +1,63 @@
+﻿"Phrases"
+{
+	"Gave"
+	{
+		"da"			"gav"
+	}
+	"Grabbed"
+	{
+		"da"			"tog"
+	}
+	"Switched"
+	{
+		"da"			"skiftede"
+	}
+	"From"
+	{
+		"da"			"fra"
+	}
+	"To"
+	{
+		"da"			"til"
+	}
+	"With"
+	{
+		"da"			"med"
+	}
+	"weapon_molotov"
+	{
+		"da"			"en molotov cocktail"
+	}
+	"weapon_pipe_bomb"
+	{
+		"da"			"en rørbombe"
+	}
+	"weapon_vomitjar"
+	{
+		"da"			"et brækglas"
+	}
+	"weapon_first_aid_kit"
+	{
+		"da"			"et førstehjælps sæt"
+	}
+	"weapon_pain_pills"
+	{
+		"da"			"smertestillende piller"
+	}
+	"weapon_adrenaline"
+	{
+		"da"			"adrenalin"
+	}
+	"weapon_upgradepack_explosive"
+	{
+		"da"			"explosivt ammunition"
+	}
+	"weapon_upgradepack_incendiary"
+	{
+		"da"			"brændbar ammunition"
+	}
+	"weapon_defibrillator"
+	{
+		"da"			"en hjertestarter"
+	}
+}

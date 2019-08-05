@@ -1,0 +1,63 @@
+﻿"Phrases"
+{
+	"Gave"
+	{
+		"de"	"gibt"
+	}
+	"Grabbed"
+	{
+		"de"	"nimmt"
+	}
+	"Switched"
+	{
+		"de"	"wechselt"
+	}
+	"From"
+	{
+		"de"	"von"
+	}
+	"To"
+	{
+		"de"	"an"
+	}
+	"With"
+	{
+		"de"	"mit"
+	}
+	"weapon_molotov"
+	{
+		"de"	"ein Molotowcocktail"
+	}
+	"weapon_pipe_bomb"
+	{
+		"de"	"eine Rohrbombe"
+	}
+	"weapon_vomitjar"
+	{
+		"de"	"einen Behälter mit Galle"
+	}
+	"weapon_first_aid_kit"
+	{
+		"de"	"das Verbandszeug"
+	}
+	"weapon_pain_pills"
+	{
+		"de"	"Schmerzmittel"
+	}
+	"weapon_adrenaline"
+	{
+		"de"	"Adrenalin"
+	}
+	"weapon_upgradepack_explosive"
+	{
+		"de"	"Explosivmunition"
+	}
+	"weapon_upgradepack_incendiary"
+	{
+		"de"	"Brandmunition"
+	}
+	"weapon_defibrillator"
+	{
+		"de"	"ein Defibrillator"
+	}
+}

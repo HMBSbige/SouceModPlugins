@@ -1,0 +1,63 @@
+"Phrases"
+{
+	"Gave"
+	{
+		"pt"			"deu"
+	}
+	"Grabbed"
+	{
+		"pt"			"levou"
+	}
+	"Switched"
+	{
+		"pt"			"trocou"
+	}
+	"From"
+	{
+		"pt"			"de"
+	}
+	"To"
+	{
+		"pt"			"para"
+	}
+	"With"
+	{
+		"pt"			"com"
+	}
+	"weapon_molotov"
+	{
+		"pt"			"um molotov"
+	}
+	"weapon_pipe_bomb"
+	{
+		"pt"			"um pipebomb"
+	}
+	"weapon_vomitjar"
+	{
+		"pt"			"um vomitjar"
+	}
+	"weapon_first_aid_kit"
+	{
+		"pt"			"um medkit"
+	}
+	"weapon_pain_pills"
+	{
+		"pt"			"pain pills"
+	}
+	"weapon_adrenaline"
+	{
+		"pt"			"adrenaline"
+	}
+	"weapon_upgradepack_explosive"
+	{
+		"pt"			"explosive ammo"
+	}
+	"weapon_upgradepack_incendiary"
+	{
+		"pt"			"incendiary ammo"
+	}
+	"weapon_defibrillator"
+	{
+		"pt"			"um defibrillator"
+	}
+}
