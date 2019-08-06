@@ -1,0 +1,25 @@
+"Games"
+{
+	"left4dead2"
+	{
+		"Offsets"
+		{
+			"SetModel"
+			{
+				"windows"	"26"
+				"linux"		"27"
+			}
+		}
+	}
+	"left4dead"
+	{
+		"Offsets"
+		{
+			"SetModel"
+			{
+				"windows"	"26"
+				"linux"		"27"
+			}
+		}
+	}
+}
