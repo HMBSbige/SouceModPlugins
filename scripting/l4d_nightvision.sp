@@ -20,7 +20,7 @@ public Plugin:myinfo =
 public OnPluginStart()
 {
 	RegConsoleCmd("sm_nightvision", sm_nightvision);
-	l4d_nt_team = CreateConVar("l4d_nt_team", "1", "0:禁用 1:启用 2:仅幸存者启用 3:仅感染者启用", FCVAR_PLUGIN);	
+	l4d_nt_team = CreateConVar("l4d_nt_team", "1", "0:disable, 1:enable for survivor and infected, 2:enable for survivor, 3:enable for infected", FCVAR_SS_ADDED);	
 	AutoExecConfig(true, "l4d_nightvision"); 
 	HookConVarChange(l4d_nt_team, ConVarChange);
 	GetConVar();
@@ -38,7 +38,9 @@ GetConVar()
 }
 public Action:sm_nightvision(client,args)
 {
-	if(IsClientInGame(client))SwitchNightVision(client);
+	if(IsClientInGame(client))
+		SwitchNightVision(client);
+	return Plugin_Handled;
 }
 //code from "Block Flashlight",
 public Action:OnPlayerRunCmd(client, &buttons, &impuls, Float:vel[3], Float:angles[3], &weapon)
@@ -75,7 +77,6 @@ SwitchNightVision(client)
 	{
 		SetEntProp(client, Prop_Send, "m_bNightVisionOn",1); 
 		PrintHintText(client, "夜视开启");
-		
 	}
 	else
 	{

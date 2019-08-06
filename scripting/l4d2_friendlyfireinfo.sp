@@ -21,16 +21,16 @@ new kill_counts[MAXPLAYERS+1][3];
 
 public OnPluginStart() {
 	//create new cvars
-	broadcast = CreateConVar("l4d_broadcast_kill", "1", "0: 关闭 1: 开启 2: 仅爆头",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,2.0);
-	broadcast_con = CreateConVar("l4d_broadcast_con", "0", "显示在控制台 0: 关闭 1: 开启",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
-	broadcast_attack = CreateConVar("l4d_broadcast_ff", "2", "显示给攻击者或在聊天框显示 0: 关闭 1: Hint 2: Hint + Chat 3: Chat",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,3.0);
-	broadcast_victim = CreateConVar("l4d_broadcast_hit", "0", "显示给被攻击者 0: 关闭 1: 开启",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
+	broadcast = CreateConVar("l4d2_friendlyfireinfo_kill", "1", "0: Off. 1: On. 2: Headshots only.",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,2.0);
+	broadcast_con = CreateConVar("l4d2_friendlyfireinfo_con", "0", "Printing Console 0: Off 1: On",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
+	broadcast_attack = CreateConVar("l4d2_friendlyfireinfo_ff", "2", "Print to attacker. 0: Off 1: Hint 2: Hint + Chat 3: Chat",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,3.0);
+	broadcast_victim = CreateConVar("l4d2_friendlyfireinfo_hit", "0", "Print to victims chat. 0: Off 1: On",FCVAR_REPLICATED|FCVAR_GAMEDLL|FCVAR_NOTIFY,true,0.0,true,1.0);
 	
 	//hook events
 	HookEvent("player_hurt", Event_Player_Hurt, EventHookMode_Post);
 	HookEvent("player_death", Event_Player_Death, EventHookMode_Pre);
 	
-	AutoExecConfig(true,"l4d_broadcast");
+	AutoExecConfig(true,"l4d2_friendlyfireinfo");
 }
 
 public Action:Event_Player_Death(Handle:event, const String:name[], bool:dontBroadcast) {

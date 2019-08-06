@@ -28,7 +28,7 @@ public OnPluginStart()
 
 	g_FriendlyFireAbsorb	= CreateConVar("fftlite_absorb","1","1=不会受到友军伤害");
 	g_FriendlyFireReflect	= CreateConVar("fftlite_reflect","1","1=会受到对队友造成的伤害");
-	g_FriendlyFireKick		= CreateConVar("fftlite_kick","0","对队友造成多少伤害会被踢 0=OFF");
+	g_FriendlyFireKick		= CreateConVar("fftlite_kick","0","0=OFF 对队友造成多少伤害会被踢");
 	g_FriendlyFireIncap		= CreateConVar("fftlite_incap","0","1=被反射的伤害可以击杀自己");
 	g_FriendlyFireBots		= CreateConVar("fftlite_bots","0","1=BOT有友伤");
 
