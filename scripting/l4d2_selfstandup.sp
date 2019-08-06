@@ -399,7 +399,7 @@ public EVENT_HealSuccess(Handle:event, const String:name[], bool:dontBroadcast)
 		RevCount[victim] = GetEntProp( victim, Prop_Send, "m_currentReviveCount" );
 		if ( !IsFakeClient( victim ) && g_message > NONE )
 		{
-			PrintToChat( victim, "\x04[\x05剩余次数\x04]\x05:  \x04%d \x05of \x04%d", RevCount[victim], g_blackwhite );
+			PrintToChat( victim, "\x03[自救] \x04[\x05剩余次数\x04]\x05:  \x04%d \x05of \x04%d", RevCount[victim], g_blackwhite );
 		}
 	}
 }
@@ -459,14 +459,14 @@ public EVENT_ReviveSuccess( Handle:event, const String:name[], bool:dontBroadcas
 				}
 				if ( g_message > NONE )
 				{
-					PrintToChatAll( "\x04%N \x05进入黑白状态!!", victim );
+					PrintToChatAll( "\x03[自救] \x04%N \x05进入黑白状态!!", victim );
 				}
 			}
 			else
 			{
 				if ( g_message > NONE )
 				{
-					PrintToChat( victim, "\x04%d \x05of \x04%d, \x05你被 \x04%N 所救", RevCount[victim], g_blackwhite, helper );
+					PrintToChat( victim, "\x03[自救] \x04%d \x05of \x04%d, \x05你被 \x04%N 所救", RevCount[victim], g_blackwhite, helper );
 				}
 			}
 		}
@@ -774,7 +774,7 @@ public Action:Timer_ThirdStrike( Handle:timer, any:victim )
 			}
 			if ( g_message > NONE )
 			{
-				PrintToChatAll( "\x04%N \x05进入黑白状态!!", victim );
+				PrintToChatAll( "\x03[自救] \x04%N \x05进入黑白状态!!", victim );
 			}
 		}
 	}
@@ -897,7 +897,7 @@ GetUp( victim )
 					{
 						if ( g_costly == NONE )
 						{
-							PrintToChat( victim, "\x04[\x05剩余次数\x04]\x05:  \x04%d \x05of \x04%d", RevCount[victim], g_blackwhite );
+							PrintToChat( victim, "\x03[自救] \x04[\x05剩余次数\x04]\x05:  \x04%d \x05of \x04%d", RevCount[victim], g_blackwhite );
 						}
 						else
 						{
@@ -921,7 +921,7 @@ GetUp( victim )
 				{
 					if ( g_costly == NONE )
 					{
-						PrintToChat( victim, "\x04[\x05剩余次数\x04]\x05:  \x04%d \x05of \x04%d", RevCount[victim], g_blackwhite );
+						PrintToChat( victim, "\x03[自救] \x04[\x05剩余次数\x04]\x05:  \x04%d \x05of \x04%d", RevCount[victim], g_blackwhite );
 					}
 					else
 					{
@@ -967,8 +967,8 @@ GetUpTeam( helper, victim )
 				SetEntProp( victim, Prop_Send, "m_currentReviveCount", RevCount[victim] );
 				if ( g_message > NONE )
 				{
-					PrintToChat( victim, "\x04%d \x05of \x04%d, \x05你被 \x04%N所救", RevCount[victim], g_blackwhite, helper );
-					PrintToChat( helper, "成功救起 \x04%N", victim );
+					PrintToChat( victim, "\x03[自救] \x04%d \x05of \x04%d, \x05你被 \x04%N所救", RevCount[victim], g_blackwhite, helper );
+					PrintToChat( helper, "\x03[自救] \x01成功救起 \x04%N", victim );
 				}
 			}
 		}
@@ -978,8 +978,8 @@ GetUpTeam( helper, victim )
 			SetEntPropFloat( victim, Prop_Send, "m_healthBuffer", ReviveHealthBuff[victim]);
 			if ( g_message > NONE )
 			{
-				PrintToChat( victim, "\x05你被 \x04%N所救", helper );
-				PrintToChat( helper, "成功救起 \x04%N", victim );
+				PrintToChat( victim, "\x03[自救] \x05你被 \x04%N所救", helper );
+				PrintToChat( helper, "\x03[自救] \x01成功救起 \x04%N", victim );
 			}
 		}
 		EmitSoundToClient( victim, SOUND_GETUP );
@@ -1303,7 +1303,7 @@ UsePack( client, bool:Msg )
 		
 		if ( Msg )
 		{
-			PrintToChat( client, "\x04%d \x05of \x04%d\x05,  消耗了  \x04%s", RevCount[client], g_blackwhite, slotName );
+			PrintToChat( client, "\x03[自救] \x04%d \x05of \x04%d\x05,  消耗了  \x04%s", RevCount[client], g_blackwhite, slotName );
 		}
 		
 		AcceptEntityInput( PlayerWeaponSlot[client], "kill" );
