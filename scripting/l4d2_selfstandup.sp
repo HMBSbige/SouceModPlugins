@@ -466,7 +466,7 @@ public EVENT_ReviveSuccess( Handle:event, const String:name[], bool:dontBroadcas
 			{
 				if ( g_message > NONE )
 				{
-					PrintToChat( victim, "\x03[自救] \x04%d \x05of \x04%d, \x05你被 \x04%N 所救", RevCount[victim], g_blackwhite, helper );
+					PrintToChat( victim, "\x03[自救] \x04%d \x05of \x04%d, \x05你被 \x04%N \x05所救", RevCount[victim], g_blackwhite, helper );
 				}
 			}
 		}
@@ -967,7 +967,7 @@ GetUpTeam( helper, victim )
 				SetEntProp( victim, Prop_Send, "m_currentReviveCount", RevCount[victim] );
 				if ( g_message > NONE )
 				{
-					PrintToChat( victim, "\x03[自救] \x04%d \x05of \x04%d, \x05你被 \x04%N所救", RevCount[victim], g_blackwhite, helper );
+					PrintToChat( victim, "\x03[自救] \x04%d \x05of \x04%d, \x05你被 \x04%N \x05所救", RevCount[victim], g_blackwhite, helper );
 					PrintToChat( helper, "\x03[自救] \x01成功救起 \x04%N", victim );
 				}
 			}
@@ -978,7 +978,7 @@ GetUpTeam( helper, victim )
 			SetEntPropFloat( victim, Prop_Send, "m_healthBuffer", ReviveHealthBuff[victim]);
 			if ( g_message > NONE )
 			{
-				PrintToChat( victim, "\x03[自救] \x05你被 \x04%N所救", helper );
+				PrintToChat( victim, "\x03[自救] \x05你被 \x04%N \x05所救", helper );
 				PrintToChat( helper, "\x03[自救] \x01成功救起 \x04%N", victim );
 			}
 		}
