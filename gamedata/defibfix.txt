@@ -1,0 +1,41 @@
+"Games"
+{
+	"left4dead2"
+	{
+		"Signatures"
+		{
+			"GetPlayerByCharacter"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8b\xec\x8b\x45*\x83\xec*\x83\xf8\x08\x75*\x33\xc0\x8b\xe5\x5d\xc3"
+				"linux"		"@_ZN13CTerrorPlayer20GetPlayerByCharacterE21SurvivorCharacterType"
+			}
+
+			"DefibrillatorOnStartAction"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8B\xEC\xD9\xEE\x53\x56\x57\x8B\x7D\x0C"
+				"linux"		"@_ZN18CItemDefibrillator13OnStartActionEN17CBaseBackpackItem22BackpackItemActionTypeEP13CTerrorPlayerP11CBaseEntityf"
+			}
+
+			"DefibrillatorOnActionComplete"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8b\xec\x8b\x45*\x56\x6a\x00\x68****\x68****\x6a\x00\x50\xe8****\x8b\xf0"
+				"linux"		"@_ZN18CItemDefibrillator16OnActionCompleteEP13CTerrorPlayerP11CBaseEntity"
+			}
+			"CSurvivorDeathModel::Create"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8b\xec\x57\x8b\x7d\x08\x85\xff\x75*\x33\xc0\x5f\x5d\xc3\x8b\x87"
+				"linux"		"@_ZN19CSurvivorDeathModel6CreateEP13CTerrorPlayer"
+			}
+			"CBaseEntity::SetAbsOrigin"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8b\xec\x83\xec*\xa1****\x33\xc5\x89\x45*\x56\x57\x8b\x7d\x08\x8b\xf1\xe8****\xf3\x0f\x10\x07"
+				"linux"		"@_ZN11CBaseEntity12SetAbsOriginERK6Vector"
+			}
+		}
+	}
+}
