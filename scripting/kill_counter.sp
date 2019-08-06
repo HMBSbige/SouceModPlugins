@@ -3,7 +3,7 @@
 #include <clientprefs>
 
 #define PLUGIN_VERSION "1.0"
-#define PLUGIN_PREFIX "\x04击杀统计: \x03"
+#define PLUGIN_PREFIX "\x03[提示] \x01"
 
 new Handle:g_hCounter = INVALID_HANDLE;
 new Handle:g_hInterval = INVALID_HANDLE;
@@ -119,7 +119,7 @@ public Action:Timer_Process(Handle:timer, any:client)
 //Repeating timer that displays a message to all clients.
 public Action:Timer_DisplayAds(Handle:timer) 
 {
-	PrintToChatAll("%s输入!counter开启/关闭击杀提示.输入!kills显示你的当前数据. 输入!teamkills显示全队当前数据.", PLUGIN_PREFIX);
+	PrintToChatAll("%s输入 \x04!counter\x01 开启/关闭击杀提示;输入 \x04!kills\x01 显示你的当前数据. 输入 \x04!teamkills\x01 显示全队当前数据.", PLUGIN_PREFIX);
 }
 
 //As the name implies, this is called when a player goes splat.
@@ -136,7 +136,7 @@ public Action:Event_OnPlayerDeath(Handle:event, const String:name[], bool:dontBr
 }
 
 //Define as a void since it won't return any information. Prints stuff to the client.
-void:Void_PrintKillInfo(attacker, bool:g_bHeadshot)
+Void_PrintKillInfo(attacker, bool:g_bHeadshot)
 {
 	new g_iTemp, g_iMode = GetConVarInt(g_hCounter);
 

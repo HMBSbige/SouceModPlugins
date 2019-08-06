@@ -42,13 +42,13 @@ public void OnMapStart()
 public Action Outtickrate(Handle timer)
 {
 	tickrate = 1.0 / GetTickInterval();
-	PrintToChatAll("服务器 tickrate : %d", RoundToZero(tickrate));
+	PrintToChatAll("\x03[提示] \x01服务器 tickrate : \x04%d", RoundToZero(tickrate));
 }
 
 public Action:Command_GetTickrate(client, args)
 {
 	tickrate = 1.0 / GetTickInterval();
-	PrintToChatAll("服务器 tickrate : %d", RoundToZero(tickrate));
+	PrintToChatAll("\x03[提示] \x01服务器 tickrate : \x04%d", RoundToZero(tickrate));
 	return Plugin_Handled;
 }
 
@@ -134,7 +134,7 @@ public void Event_FinalWin(Event event, const char [] name, bool dontBroadcast)
 {
 	if (ig_coop)
 	{
-		PrintToChatAll("70 秒后换图...");
+		PrintToChatAll("\x03[提示]\x01 70 秒后换图...");
 		CreateTimer(70.0, HxTimerNextMap, _, TIMER_FLAG_NO_MAPCHANGE);
 	}
 }
