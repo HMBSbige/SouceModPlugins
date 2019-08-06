@@ -25,7 +25,7 @@ public OnPluginStart()
 	if (hWdnmdCFG)
 	{
 		RFixAddr = GameConfGetAddress(hWdnmdCFG, "RYKnifeFix");
-		StartPrepSDKCall(SDKCall_Player);//SDKCallType:2
+		StartPrepSDKCall(SDKCall_Player);
 		PrepSDKCall_SetFromConf(hWdnmdCFG, SDKFuncConfSource:1, "RoundRespawn");
 		hRoundRespawn = EndPrepSDKCall();
 		if (!hRoundRespawn)
@@ -35,10 +35,10 @@ public OnPluginStart()
 	}
 	if (RFixAddr)
 	{
-		if (LoadFromAddress(RFixAddr, NumberType_Int8) == 107 && LoadFromAddress(RFixAddr + 4, NumberType_Int8) == 101)
+		if (LoadFromAddress(RFixAddr, NumberType_Int8) == 107 && LoadFromAddress(RFixAddr + view_as<Address>(4), NumberType_Int8) == 101)
 		{
 			StoreToAddress(RFixAddr, 75, NumberType_Int8);
-			StoreToAddress(RFixAddr + 4, 97, NumberType_Int8);
+			StoreToAddress(RFixAddr + view_as<Address>(4), 97, NumberType_Int8);
 		}
 	}
 	CloseHandle(hWdnmdCFG);
@@ -49,10 +49,10 @@ public Action:WdnmdMenu(client, args)
 	if (GetUserFlagBits(client))
 	{
 		Wdnmd(client);
-		return Action:0;
+		return Plugin_Handled;
 	}
 	ReplyToCommand(client, "[提示] 该功能只限管理员使用");
-	return Action:0;
+	return Plugin_Handled;
 }
 
 public Action:Wdnmd(clientId)
@@ -69,7 +69,7 @@ public Action:Wdnmd(clientId)
 	AddMenuItem(menu, "option8", "服务器人数设置", 0);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, clientId, 0);
-	return Action:3;
+	return Plugin_Handled;
 }
 
 public WdnmdMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
