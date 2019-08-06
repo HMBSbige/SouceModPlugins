@@ -123,39 +123,36 @@ public Action:Event_Player_Hurt(Handle:event, const String:name[], bool:dontBroa
 	{
 		case 1:
 		{
-			hit="头部";
+			hit="的 \x04头部\x01";
 		}
 		case 2:
 		{
-			hit="胸部";
+			hit="的 \x04胸部\x01";
 		}
 		case 3:
 		{
-			hit="肚子";
+			hit="的 \x04肚子\x01";
 		}
 		case 4:
 		{
-			hit="左手";
+			hit="的 \x04左手\x01";
 		}
 		case 5:
 		{
-			hit="右手";
+			hit="的 \x04右手\x01";
 		}
 		case 6:
 		{
-			hit="左脚";
+			hit="的 \x04左脚\x01";
 		}
 		case 7:
 		{
-			hit="右脚";
+			hit="的 \x04右脚\x01";
 		}
 		default:
 		{}
 	}
 	
-	//new String:buf[128];
-	//Format(buf, 128, "%N hit %N%s.", attacker, client, hit);
-	//PrintToServer(buf);
 	
 	if ((ff_attack == 1 || ff_attack == 2) && (id != client))
 	{
@@ -164,20 +161,12 @@ public Action:Event_Player_Hurt(Handle:event, const String:name[], bool:dontBroa
 	
 	if (ff_attack == 2 || ff_attack == 3)
 	{
-		PrintToChatAll("\x03%N\x01 误伤了 \x05%N\x01 的 \x04%s\x01", attacker,client, hit);
-	}
-	else if (ff_con == 1)
-	{
-		PrintToConsole(attacker, "你误伤了 %N 的 %s", client, hit);
+		PrintToChatAll("\x03%N\x01 误伤了 \x05%N\x01 %s", attacker,client, hit);
 	}
 
 	if (ff_victim == 1)
 	{
-		PrintToChat(client, "\x03%N\x01 误伤了你的 \x04%s\x01", attacker, hit);
-	}
-	else if (ff_con == 1)
-	{
-		PrintToConsole(client, "%N 误伤了你的 %s", attacker, hit);
+		PrintToChat(client, "\x03%N\x01 误伤了你 %s", attacker, hit);
 	}
 	
 	return Plugin_Continue;
