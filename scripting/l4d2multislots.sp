@@ -53,8 +53,8 @@ public OnPluginStart()
 	RegConsoleCmd("sm_join", JoinTeam, "Attempt to join Survivors");
 	
 	// Register cvars
-	hMaxSurvivors = CreateConVar("l4d2_multislots_max_survivors", "8", "生还者最大数量", CVAR_FLAGS, true, 4.0, true, 8.0);
-	hKickIdlers	= CreateConVar("l4d2_multislots_kickafk", "0", "是否踢出闲置玩家? (0 = no  1 = 普通玩家 10 min, 管理员免疫  2 = 全体十分钟)", CVAR_FLAGS, true, 0.0, true, 2.0);
+	hMaxSurvivors = CreateConVar("l4d2_multislots_max_survivors", "4", "How many survivors allowed?", CVAR_FLAGS, true, 4.0, true, 8.0);
+	hKickIdlers	= CreateConVar("l4d2_multislots_kickafk", "0", "Kick idle players? (0 = no 1 = players 10 min, admins kickimmune 2 = players and admins 10 min)", CVAR_FLAGS, true, 0.0, true, 2.0);
 	
 	// Hook events
 	HookEvent("item_pickup", evtRoundStartAndItemPickup);

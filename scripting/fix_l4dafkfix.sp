@@ -79,7 +79,7 @@ public OnPluginStart()
 	HookEvent("map_transition", Event_RoundEnded, EventHookMode_PostNoCopy);
 
 	RegConsoleCmd("sm_takeoverme", TakeOverMe);
-	RegConsoleCmd("sm_join", TakeOverMe);
+	//RegConsoleCmd("sm_join", TakeOverMe);
 
 	RegConsoleCmd("sm_afk", GoAwayFromKeyboard);
 	RegConsoleCmd("sm_away", GoAwayFromKeyboard);
