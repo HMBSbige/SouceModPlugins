@@ -194,4 +194,4 @@ defib-fix|https://github.com/Satanic-Spirit/defib-fix|修复电击器点错人�
 Survivor Bot AI SHOOT IT FFS Fix|https://forums.alliedmods.net/showthread.php?p=893326|修复求生之路的人工智障
 Weapon Drop|https://forums.alliedmods.net/showthread.php?t=123098|主动丢武器
 kill_counter|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/kill_counter.sp|击杀统计
-MapControl|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/l4d2_mapcontrol.sp|换图+定时输出服务器 tickrate
+MapControl|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/l4d2_mapcontrol.sp|换图
