@@ -10,6 +10,7 @@ https://developer.valvesoftware.com/wiki/SteamCMD#Linux
 ```
 dpkg --add-architecture i386
 apt-get update
+apt-get install lib32gcc1
 apt-get install steamcmd
 ```
 
