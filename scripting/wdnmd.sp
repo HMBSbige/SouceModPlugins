@@ -1,7 +1,7 @@
 #include <sourcemod>
 #include <sdktools>
 
-#define VERSION "1.1"
+#define VERSION "1.2"
 
 new String:giveorder[64];
 new useridss;
@@ -10,7 +10,7 @@ new Handle:hRoundRespawn;
 public Plugin:myinfo =
 {
 	name = "Wdnmd",
-	author = "HMBSbige",
+	author = "Disappear9&HMBSbige",
 	description = "白给插件",	
 	version = VERSION,
 	url = "https://github.com/HMBSbige"
@@ -131,6 +131,7 @@ DisplaySMMenu(client)
 	AddMenuItem(menu, "fireaxe", "斧头", 0);
 	AddMenuItem(menu, "tonfa", "警棍", 0);
 	AddMenuItem(menu, "weapon_chainsaw", "电锯", 0);
+	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, client, 0);
 	return 0;
@@ -146,6 +147,13 @@ public SMMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		Format(giveorder, 64, "give %s", getitemname);
 		DisplayNLMenu(client);
 	}
+	if (action == MenuAction_Cancel)
+    {
+        if (itemNum == MenuCancel_ExitBack)
+        {
+            		Wdnmd(client);
+        }
+    }
 	return 0;
 }
 
@@ -161,6 +169,8 @@ DisplaySRMenu(client)
 	AddMenuItem(menu, "rifle_desert", "SCAR", 0);
 	AddMenuItem(menu, "weapon_rifle_sg552", "SG552", 0);
 	AddMenuItem(menu, "weapon_grenade_launcher", "榴弹枪", 0);
+	AddMenuItem(menu, "rifle_m60", "M60", 0);
+	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, client, 0);
 	return 0;
@@ -176,6 +186,13 @@ public SRMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		Format(giveorder, 64, "give %s", getitemname);
 		DisplayNLMenu(client);
 	}
+	if (action == MenuAction_Cancel)
+    {
+        if (itemNum == MenuCancel_ExitBack)
+        {
+            		Wdnmd(client);
+        }
+    }
 	return 0;
 }
 
@@ -191,6 +208,7 @@ DisplaySSMenu(client)
 	AddMenuItem(menu, "sniper_military", "G3SG1", 0);
 	AddMenuItem(menu, "weapon_sniper_scout", "Scout", 0);
 	AddMenuItem(menu, "weapon_sniper_awp", "AWP", 0);
+	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, client, 0);
 	return 0;
@@ -206,6 +224,13 @@ public SSMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		Format(giveorder, 64, "give %s", getitemname);
 		DisplayNLMenu(client);
 	}
+	if (action == MenuAction_Cancel)
+    {
+        if (itemNum == MenuCancel_ExitBack)
+        {
+            		Wdnmd(client);
+        }
+    }
 	return 0;
 }
 
@@ -220,6 +245,7 @@ DisplayMTMenu(client)
 	AddMenuItem(menu, "vomitjar", "胆汁", 0);
 	AddMenuItem(menu, "pipe_bomb", "土制", 0);
 	AddMenuItem(menu, "molotov", "燃烧瓶", 0);
+	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, client, 0);
 	return 0;
@@ -235,6 +261,13 @@ public MTMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		Format(giveorder, 64, "give %s", getitemname);
 		DisplayNLMenu(client);
 	}
+	if (action == MenuAction_Cancel)
+    {
+        if (itemNum == MenuCancel_ExitBack)
+        {
+            		Wdnmd(client);
+        }
+    }
 	return 0;
 }
 
@@ -251,6 +284,7 @@ DisplayOTMenu(client)
 	AddMenuItem(menu, "oxygentank", "氧气瓶", 0);
 	AddMenuItem(menu, "weapon_fireworkcrate", "烟花", 0);
 	AddMenuItem(menu, "weapon_gnome", "圣诞老人", 0);
+	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, client, 0);
 	return 0;
@@ -266,6 +300,13 @@ public OTMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		Format(giveorder, 64, "give %s", getitemname);
 		DisplayNLMenu(client);
 	}
+	if (action == MenuAction_Cancel)
+    {
+        if (itemNum == MenuCancel_ExitBack)
+        {
+            		Wdnmd(client);
+        }
+    }
 	return 0;
 }
 
@@ -281,6 +322,7 @@ DisplayLUMenu(client)
 	AddMenuItem(menu, "slayinfected", "处死所有特感", 0);
 	AddMenuItem(menu, "slayplayer", "处死所有玩家", 0);
 	AddMenuItem(menu, "kickallbots", "踢除所有bot", 0);
+	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, client, 0);
 	return 0;
@@ -350,6 +392,13 @@ public LUMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 			}
 		}
 	}
+	if (action == MenuAction_Cancel)
+    {
+        if (itemNum == MenuCancel_ExitBack)
+        {
+            		Wdnmd(client);
+        }
+    }
 	return 0;
 }
 
