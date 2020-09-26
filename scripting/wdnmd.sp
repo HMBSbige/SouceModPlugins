@@ -148,12 +148,12 @@ public SMMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		DisplayNLMenu(client);
 	}
 	if (action == MenuAction_Cancel)
-    {
-        if (itemNum == MenuCancel_ExitBack)
-        {
-            		Wdnmd(client);
-        }
-    }
+	{
+		if (itemNum == MenuCancel_ExitBack)
+		{
+					Wdnmd(client);
+		}
+	}
 	return 0;
 }
 
@@ -187,12 +187,12 @@ public SRMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		DisplayNLMenu(client);
 	}
 	if (action == MenuAction_Cancel)
-    {
-        if (itemNum == MenuCancel_ExitBack)
-        {
-            		Wdnmd(client);
-        }
-    }
+	{
+		if (itemNum == MenuCancel_ExitBack)
+		{
+					Wdnmd(client);
+		}
+	}
 	return 0;
 }
 
@@ -225,12 +225,12 @@ public SSMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		DisplayNLMenu(client);
 	}
 	if (action == MenuAction_Cancel)
-    {
-        if (itemNum == MenuCancel_ExitBack)
-        {
-            		Wdnmd(client);
-        }
-    }
+	{
+		if (itemNum == MenuCancel_ExitBack)
+		{
+					Wdnmd(client);
+		}
+	}
 	return 0;
 }
 
@@ -262,12 +262,12 @@ public MTMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		DisplayNLMenu(client);
 	}
 	if (action == MenuAction_Cancel)
-    {
-        if (itemNum == MenuCancel_ExitBack)
-        {
-            		Wdnmd(client);
-        }
-    }
+	{
+		if (itemNum == MenuCancel_ExitBack)
+		{
+					Wdnmd(client);
+		}
+	}
 	return 0;
 }
 
@@ -301,12 +301,12 @@ public OTMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		DisplayNLMenu(client);
 	}
 	if (action == MenuAction_Cancel)
-    {
-        if (itemNum == MenuCancel_ExitBack)
-        {
-            		Wdnmd(client);
-        }
-    }
+	{
+		if (itemNum == MenuCancel_ExitBack)
+		{
+					Wdnmd(client);
+		}
+	}
 	return 0;
 }
 
@@ -393,12 +393,12 @@ public LUMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		}
 	}
 	if (action == MenuAction_Cancel)
-    {
-        if (itemNum == MenuCancel_ExitBack)
-        {
-            		Wdnmd(client);
-        }
-    }
+	{
+		if (itemNum == MenuCancel_ExitBack)
+		{
+					Wdnmd(client);
+		}
+	}
 	return 0;
 }
 
