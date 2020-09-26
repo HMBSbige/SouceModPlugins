@@ -177,7 +177,7 @@ Survivor Identity Fix for 5+ Survivors|https://forums.alliedmods.net/showpost.ph
 Riot Cop (and Fallen Survivor) Head Shot|https://forums.alliedmods.net/showthread.php?p=1626951|城管正面爆头可击杀
 self stand up|https://forums.alliedmods.net/showthread.php?p=1795311|倒地自起，与 l4d_incapcrawl 插件冲突
 Survivor AI Trigger fix|https://forums.alliedmods.net/showthread.php?p=1004836|全 Bot 队伍
-Upgrade packs BUG FIX|https://forums.alliedmods.net/showthread.php?t=174797|多人配件 Bug 修复
+Upgrade Pack Fixes|https://forums.alliedmods.net/showthread.php?p=2690901|多人配件 Bug 修复
 Weapon Unlock|https://forums.alliedmods.net/showthread.php?p=1041458|武器解锁已经不需要了，但可以修改伤害
 Survivor_AFK_Fix|https://forums.alliedmods.net/showthread.php?p=2714236|AFK BUG 修复，需要 [DHooks extension with detour support](https://forums.alliedmods.net/showpost.php?p=2588686&postcount=589)
 Botcreator|https://forums.alliedmods.net/showthread.php?p=1042521|多人自动添加 Bot 、双倍补给
