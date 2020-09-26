@@ -31,9 +31,7 @@
 #define GAMEDATA "survivor_afk_fix"
 #define PLUGIN_VERSION	"1.0.4"
 
-#if DEBUG
 Handle hAFKSDKCall;
-#endif
 
 Handle hSetHumanSpecSDKCall;
 Handle hSetObserverTargetSDKCall;
@@ -105,23 +103,25 @@ public void OnPluginStart()
 		SetFailState("Unable to prep SDKCall 'CTerrorPlayer::SetObserverTarget'");
 	
 	
-	#if DEBUG
+	
 	StartPrepSDKCall(SDKCall_Player);
 	if(!PrepSDKCall_SetFromConf(hGamedata, SDKConf_Signature, "CTerrorPlayer::GoAwayFromKeyboard"))
 		SetFailState("Error finding the 'CTerrorPlayer::GoAwayFromKeyboard' signature.");
-		
+	
 	hAFKSDKCall = EndPrepSDKCall();
 	if(hAFKSDKCall == null)
 		SetFailState("Unable to prep SDKCall 'CTerrorPlayer::GoAwayFromKeyboard'");
 	
-	RegAdminCmd("sm_afktest", AFKTEST, ADMFLAG_ROOT);
-	#endif
+	RegConsoleCmd("sm_afk", GoAwayFromKeyboard);
+	RegConsoleCmd("sm_idle", GoAwayFromKeyboard);
+	RegConsoleCmd("sm_spec", GoAwayFromKeyboard);
+	RegConsoleCmd("sm_spectate", GoAwayFromKeyboard);
+	RegConsoleCmd("sm_away", GoAwayFromKeyboard);
 	
 	delete hGamedata;
 }
 
-#if DEBUG
-public Action AFKTEST(int client, int args)
+public Action GoAwayFromKeyboard(int client, int args)
 {
 	if(client == 0)
 		return Plugin_Handled;
@@ -129,7 +129,6 @@ public Action AFKTEST(int client, int args)
 	SDKCall(hAFKSDKCall, client);
 	return Plugin_Handled;
 }
-#endif
 
 public MRESReturn OnGoAFKPre(int pThis, Handle hReturn)
 {

@@ -184,11 +184,11 @@ public Action JoinTeam(int client,int args)
 	{	
 		if(DispatchKeyValue(client, "classname", "player") == true)
 		{
-			PrintHintText(client, "You are allready joined the Survivor team, dumb fuck");
+			PrintHintText(client, "你已经是生还者！");
 		}
 		else if((DispatchKeyValue(client, "classname", "info_survivor_position") == true) && !IsAlive(client))
 		{
-			PrintHintText(client, "请等待救援或复活");
+			PrintHintText(client, "请等待救援或复活！");
 		}
 	}
 	else if(IsClientIdle(client))
