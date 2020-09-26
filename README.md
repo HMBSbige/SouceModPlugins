@@ -179,7 +179,7 @@ self stand up|https://forums.alliedmods.net/showthread.php?p=1795311|倒地自�
 Survivor AI Trigger fix|https://forums.alliedmods.net/showthread.php?p=1004836|全 Bot 队伍
 Upgrade packs BUG FIX|https://forums.alliedmods.net/showthread.php?t=174797|多人配件 Bug 修复
 Weapon Unlock|https://forums.alliedmods.net/showthread.php?p=1041458|武器解锁已经不需要了，但可以修改伤害
-4+ Survivor AFK Fix|https://forums.alliedmods.net/showpost.php?p=1984920&postcount=38| AFK BUG 修复并添加 join 和 away 命令
+Survivor_AFK_Fix|https://forums.alliedmods.net/showthread.php?p=2714236|AFK BUG 修复，需要 [DHooks extension with detour support](https://forums.alliedmods.net/showpost.php?p=2588686&postcount=589)
 Botcreator|https://forums.alliedmods.net/showthread.php?p=1042521|多人自动添加 Bot 、双倍补给
 MultiSlots|https://forums.alliedmods.net/showthread.php?p=1239544|多人 Bot 管理，可中途加入 Bot。原版一堆 Bug，自己修复了
 Character Select Menu|https://forums.alliedmods.net/showthread.php?t=107121|换角色或者外观
