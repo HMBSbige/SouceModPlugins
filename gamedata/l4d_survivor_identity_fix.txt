@@ -1,24 +1,28 @@
 "Games"
 {
-	"left4dead2"
+	"left4dead"
 	{
-		"Offsets"
+		"Signatures"
 		{
-			"SetModel"
+			"CBasePlayer::SetModel"
 			{
-				"windows"	"26"
-				"linux"		"27"
+				"library"	"server"
+				"linux"	"@_ZN11CBasePlayer8SetModelEPKc"
+				"windows"	"\x8B\x2A\x2A\x2A\x56\x57\x50\x8B\x2A\xE8\x2A\x2A\x2A\x2A\x8B\x3D"
+				"mac"		"@_ZN11CBasePlayer8SetModelEPKc"
 			}
 		}
 	}
-	"left4dead"
+	"left4dead2"
 	{
-		"Offsets"
+		"Signatures"
 		{
-			"SetModel"
+			"CBasePlayer::SetModel"
 			{
-				"windows"	"26"
-				"linux"		"27"
+				"library"	"server"
+				"linux"	"@_ZN11CBasePlayer8SetModelEPKc"
+				"windows"	"\x55\x8B\x2A\x8B\x2A\x2A\x56\x57\x50\x8B\x2A\xE8\xC0\x7B"
+				"mac"		"@_ZN11CBasePlayer8SetModelEPKc"
 			}
 		}
 	}

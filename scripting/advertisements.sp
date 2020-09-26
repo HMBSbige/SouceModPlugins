@@ -1,13 +1,13 @@
 #include <sourcemod>
-#include <colorvariables>
 #undef REQUIRE_PLUGIN
 #include <updater>
+#include "advertisements/chatcolors.sp"
 #include "advertisements/topcolors.sp"
 
 #pragma newdecls required
 #pragma semicolon 1
 
-#define PL_VERSION	"2.0.2"
+#define PL_VERSION	"2.0.4"
 #define UPDATE_URL	"http://ErikMinekus.github.io/sm-advertisements/update.txt"
 
 public Plugin myinfo =
@@ -45,6 +45,7 @@ public void OnPluginStart()
 
     RegServerCmd("sm_advertisements_reload", Command_ReloadAds, "Reload the advertisements");
 
+    AddChatColors();
     AddTopColors();
 
     if (LibraryExists("updater")) {
@@ -52,11 +53,10 @@ public void OnPluginStart()
     }
 }
 
-public void OnMapStart()
+public void OnConfigsExecuted()
 {
     ParseAds();
-
-    g_hTimer = CreateTimer(g_hInterval.IntValue * 1.0, Timer_DisplayAd, _, TIMER_REPEAT|TIMER_FLAG_NO_MAPCHANGE);
+    RestartTimer();
 }
 
 public void OnLibraryAdded(const char[] name)
@@ -73,11 +73,7 @@ public void ConVarChange_File(ConVar convar, const char[] oldValue, const char[]
 
 public void ConVarChange_Interval(ConVar convar, const char[] oldValue, const char[] newValue)
 {
-    if (g_hTimer) {
-        KillTimer(g_hTimer);
-    }
-
-    g_hTimer = CreateTimer(g_hInterval.IntValue * 1.0, Timer_DisplayAd, _, TIMER_REPEAT|TIMER_FLAG_NO_MAPCHANGE);
+    RestartTimer();
 }
 
 
@@ -106,7 +102,7 @@ public Action Timer_DisplayAd(Handle timer)
         return;
     }
 
-    char sCenter[1024], sChat[1024], sHint[1024], sMenu[1024], sTop[1024], sFlags[16];
+    char sCenter[1024], sChat[1024], sHint[1024], sMenu[1024], sTop[1024], sFlags[22];
     g_hAdvertisements.GetString("center", sCenter, sizeof(sCenter));
     g_hAdvertisements.GetString("chat",   sChat,   sizeof(sChat));
     g_hAdvertisements.GetString("hint",   sHint,   sizeof(sHint));
@@ -119,12 +115,9 @@ public Action Timer_DisplayAd(Handle timer)
 
     if (sCenter[0]) {
         ProcessVariables(sCenter);
-        CRemoveColors(sCenter, sizeof(sCenter));
 
         for (int i = 1; i <= MaxClients; i++) {
-            if (IsClientInGame(i) && !IsFakeClient(i) &&
-                ((!bAdmins && !(bFlags && (GetUserFlagBits(i) & (iFlags|ADMFLAG_ROOT)))) ||
-                 (bAdmins && (GetUserFlagBits(i) & (ADMFLAG_GENERIC|ADMFLAG_ROOT))))) {
+            if (IsValidClient(i, bAdmins, bFlags, iFlags)) {
                 PrintCenterText(i, sCenter);
 
                 DataPack hCenterAd;
@@ -136,28 +129,22 @@ public Action Timer_DisplayAd(Handle timer)
     }
     if (sHint[0]) {
         ProcessVariables(sHint);
-        CRemoveColors(sHint, sizeof(sHint));
 
         for (int i = 1; i <= MaxClients; i++) {
-            if (IsClientInGame(i) && !IsFakeClient(i) &&
-                ((!bAdmins && !(bFlags && (GetUserFlagBits(i) & (iFlags|ADMFLAG_ROOT)))) ||
-                 (bAdmins && (GetUserFlagBits(i) & (ADMFLAG_GENERIC|ADMFLAG_ROOT))))) {
+            if (IsValidClient(i, bAdmins, bFlags, iFlags)) {
                 PrintHintText(i, sHint);
             }
         }
     }
     if (sMenu[0]) {
         ProcessVariables(sMenu);
-        CRemoveColors(sMenu, sizeof(sMenu));
 
         Panel hPl = new Panel();
         hPl.DrawText(sMenu);
         hPl.CurrentKey = 10;
 
         for (int i = 1; i <= MaxClients; i++) {
-            if (IsClientInGame(i) && !IsFakeClient(i) &&
-                ((!bAdmins && !(bFlags && (GetUserFlagBits(i) & (iFlags|ADMFLAG_ROOT)))) ||
-                 (bAdmins && (GetUserFlagBits(i) & (ADMFLAG_GENERIC|ADMFLAG_ROOT))))) {
+            if (IsValidClient(i, bAdmins, bFlags, iFlags)) {
                 hPl.Send(i, Handler_DoNothing, 10);
             }
         }
@@ -167,18 +154,16 @@ public Action Timer_DisplayAd(Handle timer)
     if (sChat[0]) {
         bool bTeamColor = StrContains(sChat, "{teamcolor}", false) != -1;
 
-        ProcessVariables(sChat);
-        CProcessVariables(sChat, sizeof(sChat));
-        CAddWhiteSpace(sChat, sizeof(sChat));
+        char sBuffer[1024];
+        ProcessChatColors(sChat, sBuffer, sizeof(sBuffer));
+        ProcessVariables(sBuffer);
 
         for (int i = 1; i <= MaxClients; i++) {
-            if (IsClientInGame(i) && !IsFakeClient(i) &&
-                ((!bAdmins && !(bFlags && (GetUserFlagBits(i) & (iFlags|ADMFLAG_ROOT)))) ||
-                 (bAdmins && (GetUserFlagBits(i) & (ADMFLAG_GENERIC|ADMFLAG_ROOT))))) {
+            if (IsValidClient(i, bAdmins, bFlags, iFlags)) {
                 if (bTeamColor) {
-                    CSayText2(i, sChat, i);
+                    SayText2(i, sBuffer);
                 } else {
-                    PrintToChat(i, sChat);
+                    PrintToChat(i, sBuffer);
                 }
             }
         }
@@ -196,9 +181,7 @@ public Action Timer_DisplayAd(Handle timer)
         hKv.SetNum("time",     10);
 
         for (int i = 1; i <= MaxClients; i++) {
-            if (IsClientInGame(i) && !IsFakeClient(i) &&
-                ((!bAdmins && !(bFlags && (GetUserFlagBits(i) & (iFlags|ADMFLAG_ROOT)))) ||
-                 (bAdmins && (GetUserFlagBits(i) & (ADMFLAG_GENERIC|ADMFLAG_ROOT))))) {
+            if (IsValidClient(i, bAdmins, bFlags, iFlags)) {
                 CreateDialog(i, hKv, DialogType_Msg);
             }
         }
@@ -234,10 +217,17 @@ public Action Timer_CenterAd(Handle timer, DataPack pack)
 /**
  * Stocks
  */
+bool IsValidClient(int iClient, bool bAdmins, bool bFlags, int iFlags)
+{
+    return IsClientInGame(iClient) && !IsFakeClient(iClient)
+        && ((!bAdmins && !(bFlags && CheckCommandAccess(iClient, "Advertisements", iFlags)))
+            || (bAdmins && CheckCommandAccess(iClient, "Advertisements", ADMFLAG_GENERIC)));
+}
+
 void ParseAds()
 {
     delete g_hAdvertisements;
-    g_hAdvertisements = CreateKeyValues("Advertisements");
+    g_hAdvertisements = new KeyValues("Advertisements");
 
     char sFile[64], sPath[PLATFORM_MAX_PATH];
     g_hFile.GetString(sFile, sizeof(sFile));
@@ -247,6 +237,7 @@ void ParseAds()
         SetFailState("File Not Found: %s", sPath);
     }
 
+    g_hAdvertisements.SetEscapeSequences(true);
     g_hAdvertisements.ImportFromFile(sPath);
     g_hAdvertisements.GotoFirstSubKey();
 }
@@ -254,11 +245,6 @@ void ParseAds()
 void ProcessVariables(char sText[1024])
 {
     char sBuffer[64];
-    if (StrContains(sText, "\\n") != -1) {
-        Format(sBuffer, sizeof(sBuffer), "%c", 13);
-        ReplaceString(sText, sizeof(sText), "\\n", sBuffer);
-    }
-
     if (StrContains(sText, "{currentmap}", false) != -1) {
         GetCurrentMap(sBuffer, sizeof(sBuffer));
         ReplaceString(sText, sizeof(sText), "{currentmap}", sBuffer, false);
@@ -291,7 +277,7 @@ void ProcessVariables(char sText[1024])
     }
 
     ConVar hConVar;
-    char sConVar[64], sSearch[64], sReplace[64];
+    char sConVar[64], sSearch[64], sReplace[256];
     int iEnd = -1, iStart = StrContains(sText, "{"), iStart2;
     while (iStart != -1) {
         iEnd = StrContains(sText[iStart + 1], "}");
@@ -314,4 +300,10 @@ void ProcessVariables(char sText[1024])
 
         iStart += iStart2 + 1;
     }
+}
+
+void RestartTimer()
+{
+    delete g_hTimer;
+    g_hTimer = CreateTimer(float(g_hInterval.IntValue), Timer_DisplayAd, _, TIMER_REPEAT);
 }

@@ -6,13 +6,13 @@
 		{
 			"CTerrorPlayer::SelectWeightedSequence"
 			{
-				"windows"	"206"
-				"linux"		"207"
+				"windows"	"207"
+				"linux"		"208"
 			}
 			"CTerrorPlayer::DoAnimationEvent"
 			{
-				"windows"	"509"
-				"linux"		"510"
+				"windows"	"510"
+				"linux"		"511"
 			}
 		}
 	}
