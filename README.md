@@ -180,7 +180,6 @@ Survivor AI Trigger fix|https://forums.alliedmods.net/showthread.php?p=1004836|�
 Upgrade Pack Fixes|https://forums.alliedmods.net/showthread.php?p=2690901|多人配件 Bug 修复
 Weapon Unlock|https://forums.alliedmods.net/showthread.php?p=1041458|武器解锁已经不需要了，但可以修改伤害
 Survivor_AFK_Fix|https://forums.alliedmods.net/showthread.php?p=2714236|AFK BUG 修复，需要 [DHooks extension with detour support](https://forums.alliedmods.net/showpost.php?p=2588686&postcount=589)
-Botcreator|https://forums.alliedmods.net/showthread.php?p=1042521|多人自动添加 Bot 、双倍补给
 MultiSlots|https://forums.alliedmods.net/showpost.php?p=2715546&postcount=249|多人 Bot 管理
 Character Select Menu|https://forums.alliedmods.net/showthread.php?t=107121|换角色或者外观
 白给插件|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/wdnmd.sp|反编译望夜的 rygive.smxs，还需要放置 gamedata
