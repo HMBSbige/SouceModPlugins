@@ -190,3 +190,4 @@ Survivor Bot AI SHOOT IT FFS Fix|https://forums.alliedmods.net/showthread.php?p=
 Weapon Drop|https://forums.alliedmods.net/showthread.php?t=123098|主动丢武器
 kill_counter|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/kill_counter.sp|击杀统计
 MapControl|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/l4d2_mapcontrol.sp|换图
+Simple Supply|https://forums.alliedmods.net/showthread.php?p=1413057|安全屋正确生成补给
