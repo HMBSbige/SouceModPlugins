@@ -124,13 +124,15 @@ DisplaySMMenu(client)
 	SetMenuTitle(menu, "手枪+近战");
 	AddMenuItem(menu, "pistol", "小手枪", 0);
 	AddMenuItem(menu, "pistol_magnum", "马格南", 0);
-	AddMenuItem(menu, "knife", "小刀", 0);
+	AddMenuItem(menu, "fireaxe", "斧头", 0);
 	AddMenuItem(menu, "machete", "砍刀", 0);
 	AddMenuItem(menu, "katana", "日本刀", 0);
+	AddMenuItem(menu, "pitchfork", "草叉", 0);
+	AddMenuItem(menu, "shovel", "铁铲", 0);
+	AddMenuItem(menu, "knife", "小刀", 0);
 	AddMenuItem(menu, "baseball_bat", "棒球棍", 0);
-	AddMenuItem(menu, "fireaxe", "斧头", 0);
-	AddMenuItem(menu, "tonfa", "警棍", 0);
 	AddMenuItem(menu, "weapon_chainsaw", "电锯", 0);
+	AddMenuItem(menu, "tonfa", "警棍", 0);
 	SetMenuExitBackButton(menu, true);
 	SetMenuExitButton(menu, true);
 	DisplayMenu(menu, client, 0);
@@ -151,7 +153,7 @@ public SMMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 	{
 		if (itemNum == MenuCancel_ExitBack)
 		{
-					Wdnmd(client);
+			Wdnmd(client);
 		}
 	}
 	return 0;
@@ -190,7 +192,7 @@ public SRMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 	{
 		if (itemNum == MenuCancel_ExitBack)
 		{
-					Wdnmd(client);
+			Wdnmd(client);
 		}
 	}
 	return 0;
@@ -228,7 +230,7 @@ public SSMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 	{
 		if (itemNum == MenuCancel_ExitBack)
 		{
-					Wdnmd(client);
+			Wdnmd(client);
 		}
 	}
 	return 0;
@@ -265,7 +267,7 @@ public MTMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 	{
 		if (itemNum == MenuCancel_ExitBack)
 		{
-					Wdnmd(client);
+			Wdnmd(client);
 		}
 	}
 	return 0;
@@ -304,7 +306,7 @@ public OTMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 	{
 		if (itemNum == MenuCancel_ExitBack)
 		{
-					Wdnmd(client);
+			Wdnmd(client);
 		}
 	}
 	return 0;
@@ -396,7 +398,7 @@ public LUMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 	{
 		if (itemNum == MenuCancel_ExitBack)
 		{
-					Wdnmd(client);
+			Wdnmd(client);
 		}
 	}
 	return 0;
