@@ -1,60 +1,67 @@
-/* created by V10 aka maldersoft, Accelerator & $atanic $pirit */
+/* created by V10 aka maldersoft */
 "Games"
 {
 	"left4dead2"
-	{	
+	{
+		"Addresses"
+		{
+			"CDirector"
+			{
+				"windows"
+				{
+					"signature" "DirectorMusicBanks::OnRoundStart"				
+					"read" "12"					
+				}
+				"linux"
+				{
+					"signature" "TheDirector"
+				}
+			}
+		}
 		"Offsets"
 		{
 			"WitchAttackCharaster"
 			{
-				"linux"		"14"
 				"windows"	"14"
+				"linux"		"14"
 			}
-			
 			"SurvivorCounters"
 			{
-				"linux"		"1048"
-				"windows"	"1056"
-			}
-						
-			/* Offset into CDirectorMusicBanks::OnRoundStart */
-			"TheDirector"
-			{
-				"windows"	"12"
-			}			
+				"windows"	"1072"
+				"linux"		"1068"
+			}		
 		}
 		"Signatures"
 		{
 			"WitchAttack::WitchAttack"
 			{
-				"library"	"server"
-				"linux"		"@_ZN11WitchAttackC1EP11CBaseEntity"
-				"windows"	"\x55\x8B\xEC\x53\x56\x8B\xF1\xC7\x46\x04\x2A\x2A\x2A\x2A\xC7\x46\x2C\x01\x00\x00\x00\x33\xDB\x33\xC0\x89\x46\x2A\x33\xC9\x89\x4E\x2A\x57\x33\xD2\x89\x56\x2A\x33\xFF\x89\x5E\x2A\x89\x5E\x2A\x89\x5E\x2A\x89\x5E\x2A\x89\x5E\x2A\x89\x5E\x2A\x66\x89\x5E\x2A\x89\x7E\x2A\xC7\x06\x2A\x2A\x2A\x2A\xC7\x46\x04\x2A\x2A\x2A\x2A\x53"
-				/* 55 8B EC 53 56 8B F1 C7 46 04 ? ? ? ? C7 46 2C 01 00 00 00 33 DB 33 C0 89 46 ? 33 C9 89 4E ? 57 33 D2 89 56 ? 33 FF 89 5E ? 89 5E ? 89 5E ? 89 5E ? 89 5E ? 89 5E ? 66 89 5E ? 89 7E ? C7 06 ? ? ? ? C7 46 04 ? ? ? ? 53 */
-
+				"library"    "server"
+				"windows"    "\x55\x8B\xEC\x53\x56\x8B\xF1\xC7\x46\x04****\xC7\x46\x2C\x01\x00\x00\x00\x33\xDB\x33\xC0\x89\x46*\x33\xC9\x89\x4E*\x57\x33\xD2\x89\x56*\x33\xFF\x89\x5E*\x89\x5E*\x89\x5E*\x89\x5E*\x89\x5E*\x89\x5E*\x66\x89\x5E*\x89\x7E*\xC7\x06****\xC7\x46\x04****\x53"
+				"linux"        "@_ZN11WitchAttackC2EP11CBaseEntity"
+			}
+			"WitchAttack::GetVictim"
+			{
+				"library"    "server"
+				"windows"    "\x8B\x41\x38\x83\xF8\x08\x75\x2A\x8B\x41\x34\x83\xF8\xFF\x74\x1F"
+				"linux"		"@_ZNK11WitchAttack9GetVictimEv"
 			}
 			"CCharge::HandleCustomCollision_code"
 			{
-				"library"	"server"
-				"linux"		"\x0F\x85\x2A\x2A\xFF\xFF\xC6\x84\x2A\x2A\x2A\x2A\x00\x01\xF3\x0F\x58\xC1\xA1\x2A\x2A\x2A\x2A\xF3\x0F\x58\xC2\xF3"
-				"windows"	"\x0F\x85\x2A\x2A\x2A\x00\xC6\x00\x01\x8B\x15\x2A\x2A\x2A\x2A\xF3\x0F\x10\x42\x2A\xF3\x0F\x59\xC0\x0F\x2F\x45\x94\x76"
-				/*  Linux	0F 85 ? ? FF FF C6 84 ? ? ? ? 00 01 F3 0F 58 C1 A1 ? ? ? ? F3 0F 58 C2 F3  */
-				/*  Windows 0F 85 ? ? ? 00 C6 00 01 8B 15 ? ? ? ? F3 0F 10 42 ? F3 0F 59 C0 0F 2F 45 94 76 */
+				"library"    "server"
+				"windows"    "\x0f\x85***\x00\xc6\x00\x01\x8b\x15****\xf3\x0f\x10\x42*\xf3\x0f\x59\xc0\x0f"
+				"linux"        "\x0F\x85**\xFF\xFF\xC6\x84****\x00\x01\xF3\x0F\x58\xC1\xA1****\xF3\x0F\x58\xC2\xF3"
 			}
 			"CCharge::HandleCustomCollision"
 			{
-				"library"	"server"
-				"linux"		"@_ZN7CCharge21HandleCustomCollisionEP11CBaseEntityRK6VectorS4_P10CGameTraceP9CMoveData"
-				"windows"	"\x55\x8B\xEC\x81\xEC\x2A\x2A\x00\x00\xA1\x2A\x2A\x2A\x2A\x33\xC5\x89\x45\x2A\x8B\x45\x2A\x53\x8B\xD9\x89\x45\x2A\x8B\x83\x2A\x2A\x00\x00\x56\x8B\x75"
-				/* 55 8B EC 81 EC ? ? 00 00 A1 ? ? ? ? 33 C5 89 45 ? 8B 45 ? 53 8B D9 89 45 ? 8B 83 ? ? 00 00 56 8B 75 */
+				"library"    "server"
+				"windows"    "\x55\x8b\xec\x81\xec**\x00\x00\xa1****\x33\xc5\x89\x45*\x8b\x45*\x53\x8b\xd9\x89\x45*\x8b\x83**\x00\x00\x56\x8b\x75"
+				"linux"        "@_ZN7CCharge21HandleCustomCollisionEP11CBaseEntityRK6VectorS4_P10CGameTraceP9CMoveData"
 			}
-			
 			"CTerrorGameRules::CalculateSurvivalMultiplier"
 			{
 				"library"	"server"
+				"windows"	"\x55\x8b\xec\x83\xec*\x80\x7d*\x00\x53\x56\x8b\xd9\x0f\x84**\x00\x00"
 				"linux"		"@_ZN16CTerrorGameRules27CalculateSurvivalMultiplierEb"
-				"windows"	"\x55\x8B\xEC\x83\xEC\x2A\x80\x7D\x2A\x00\x53\x56\x8B\xD9\x0F\x84\x2A\x2A\x00\x00"
-				/* 55 8B EC 83 EC ? 80 7D ? 00 53 56 8B D9 0F 84 ? ? 00 00 */
 			}
 			"TheDirector"
 			{
@@ -64,17 +71,20 @@
 			"DirectorMusicBanks::OnRoundStart"
 			{
 				"library"	"server"
-				"windows"   "\x55\x8B\xEC\x83\xEC\x2A\x56\x57\x8B\xF9\x8B\x0D\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x84\xC0\x0F\x85"
-				/* 55 8B EC 83 EC ? 56 57 8B F9 8B 0D ? ? ? ? E8 ? ? ? ? 84 C0 0F 85 */
+				"windows"   "\x55\x8b\xec\x83\xec*\x56\x57\x8b\xf9\x8b\x0d****\xe8****\x84\xc0\x0f\x85"
 			}
 			"CDirector::AreTeamsFlipped"
 			{
 				"library"	"server"
+				"windows"   "\x57\x8b\xf9\xe8****\x84\xc0\x75*\xf7\x05*******\x00\x56\x74*\xbe"
 				"linux"		"@_ZNK9CDirector15AreTeamsFlippedEv"
-				"windows"   "\x57\x8B\xF9\xE8\x2A\x2A\x2A\x2A\x84\xC0\x75\x2A\xF7\x05\x2A\x2A\x2A\x2A\x2A\x2A\x2A\x00\x56\x74\x2A\xBE"
-				/* 57 8B F9 E8 ? ? ? ? 84 C0 75 ? F7 05 ? ? ? ? ? ? ? 00 56 74 ? BE */
 			}
-			
+			"CDirector::AllowWitchesInCheckpoints"
+			{
+				"library"	"server"
+				"windows"	"\x56\x8B\xF1\xE8\x2A\x2A\x2A\x2A\x84\xC0\x75\x2A\xE8"
+				"linux"		"@_ZNK9CDirector25AllowWitchesInCheckpointsEv"
+			}
 		}
 	}
 }

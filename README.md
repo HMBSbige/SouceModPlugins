@@ -184,8 +184,8 @@ MultiSlots|https://forums.alliedmods.net/showpost.php?p=2715546&postcount=249|�
 Character Select Menu|https://forums.alliedmods.net/showthread.php?t=107121|换角色或者外观
 白给插件|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/wdnmd.sp|反编译望夜的 rygive.smxs，还需要放置 gamedata
 玩家进入离开提示|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/playerinfo.sp|
-defib-fix|https://github.com/Satanic-Spirit/defib-fix|修复电击器电错人的 bug
-8+ players Bug Fixes|https://github.com/Satanic-Spirit/l4d2_bugfixes|修复生还者分数统计 Bug 和 Witch 攻击错人的bug
+l4d2_defibfix|https://github.com/Accelerator74/l4d2_defibfix|修复电击器电错人的 bug
+l4d2_bugfixes|https://github.com/Accelerator74/l4d2_bugfixes|修复生还者分数统计 Bug 和 Witch 攻击错人的bug
 Survivor Bot AI SHOOT IT FFS Fix|https://forums.alliedmods.net/showthread.php?p=893326|修复求生之路的人工智障
 Weapon Drop|https://forums.alliedmods.net/showthread.php?t=123098|主动丢武器
 kill_counter|https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/kill_counter.sp|击杀统计
