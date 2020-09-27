@@ -160,7 +160,7 @@ https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/sv_steamgroup_
 #### 其他自用插件
 插件名|下载链接|描述
 -|-|-
-Melee In The Saferoom|https://forums.alliedmods.net/showthread.php?p=1160193|安全屋生成近战
+Melee In The Saferoom|https://forums.alliedmods.net/showpost.php?p=2719073&postcount=494|安全屋生成近战
 Survivor Animation Fix Pack|https://forums.alliedmods.net/showthread.php?p=2340392|需要 DHOOKS;可能不需要此插件了
 Advertisements|https://forums.alliedmods.net/showthread.php?p=592536|
 Director Controller (All4Dead)|https://forums.alliedmods.net/showthread.php?p=751952|自用 https://github.com/HMBSbige/SouceModPlugins/blob/master/scripting/all4dead2.sp

@@ -17,6 +17,8 @@ new Handle:g_hWeaponFryingPan;
 new Handle:g_hWeaponGolfClub;
 new Handle:g_hWeaponKnife;
 new Handle:g_hWeaponKatana;
+new Handle:g_hWeaponPitchfork;
+new Handle:g_hWeaponShovel;
 new Handle:g_hWeaponMachete;
 new Handle:g_hWeaponRiotShield;
 new Handle:g_hWeaponTonfa;
@@ -52,12 +54,14 @@ public OnPluginStart()
 	g_hWeaponCricketBat 	= CreateConVar( "l4d2_MITSR_CricketBat", 	"1", "Number of cricket bats to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponCrowbar 		= CreateConVar( "l4d2_MITSR_Crowbar", 	"1", "Number of crowbars to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponElecGuitar		= CreateConVar( "l4d2_MITSR_ElecGuitar",	"1", "Number of electric guitars to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
-	g_hWeaponFireAxe			= CreateConVar( "l4d2_MITSR_FireAxe",		"1", "Number of fireaxes to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
+	g_hWeaponFireAxe		= CreateConVar( "l4d2_MITSR_FireAxe",		"1", "Number of fireaxes to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponFryingPan		= CreateConVar( "l4d2_MITSR_FryingPan",	"1", "Number of frying pans to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponGolfClub		= CreateConVar( "l4d2_MITSR_GolfClub",	"1", "Number of golf clubs to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponKnife			= CreateConVar( "l4d2_MITSR_Knife",		"1", "Number of knifes to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponKatana			= CreateConVar( "l4d2_MITSR_Katana",		"1", "Number of katanas to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
-	g_hWeaponMachete			= CreateConVar( "l4d2_MITSR_Machete",		"1", "Number of machetes to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
+	g_hWeaponPitchfork		= CreateConVar( "l4d2_MITSR_Pitchfork",		"1", "Number of pitchfork to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
+	g_hWeaponShovel			= CreateConVar( "l4d2_MITSR_Shovel",		"1", "Number of shovels to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
+	g_hWeaponMachete		= CreateConVar( "l4d2_MITSR_Machete",		"1", "Number of machetes to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponRiotShield		= CreateConVar( "l4d2_MITSR_RiotShield",	"1", "Number of riot shields to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	g_hWeaponTonfa			= CreateConVar( "l4d2_MITSR_Tonfa",		"1", "Number of tonfas to spawn (l4d2_MITSR_Random must be 0)", FCVAR_PLUGIN );
 	AutoExecConfig( true, "[L4D2]MeleeInTheSaferoom" );
@@ -85,6 +89,8 @@ public OnMapStart()
 	PrecacheModel( "models/weapons/melee/v_frying_pan.mdl", true );
 	PrecacheModel( "models/weapons/melee/v_golfclub.mdl", true );
 	PrecacheModel( "models/weapons/melee/v_katana.mdl", true );
+	PrecacheModel( "models/weapons/melee/v_pitchfork.mdl", true );
+	PrecacheModel( "models/weapons/melee/v_shovel.mdl", true );
 	PrecacheModel( "models/weapons/melee/v_machete.mdl", true );
 	PrecacheModel( "models/weapons/melee/v_tonfa.mdl", true );
 	
@@ -96,6 +102,8 @@ public OnMapStart()
 	PrecacheModel( "models/weapons/melee/w_frying_pan.mdl", true );
 	PrecacheModel( "models/weapons/melee/w_golfclub.mdl", true );
 	PrecacheModel( "models/weapons/melee/w_katana.mdl", true );
+	PrecacheModel( "models/weapons/melee/w_pitchfork.mdl", true );
+	PrecacheModel( "models/weapons/melee/w_shovel.mdl", true );
 	PrecacheModel( "models/weapons/melee/w_machete.mdl", true );
 	PrecacheModel( "models/weapons/melee/w_tonfa.mdl", true );
 	
@@ -107,6 +115,8 @@ public OnMapStart()
 	PrecacheGeneric( "scripts/melee/frying_pan.txt", true );
 	PrecacheGeneric( "scripts/melee/golfclub.txt", true );
 	PrecacheGeneric( "scripts/melee/katana.txt", true );
+	PrecacheGeneric( "scripts/melee/pitchfork.txt", true );
+	PrecacheGeneric( "scripts/melee/shovel.txt", true );
 	PrecacheGeneric( "scripts/melee/machete.txt", true );
 	PrecacheGeneric( "scripts/melee/tonfa.txt", true );
 }
@@ -251,6 +261,26 @@ stock SpawnCustomList( Float:Position[3], Float:Angle[3] )
 		for( new i = 0; i < GetConVarInt( g_hWeaponKatana ); i++ )
 		{
 			GetScriptName( "katana", ScriptName );
+			SpawnMelee( ScriptName, Position, Angle );
+		}
+	}
+	
+	//Spawn Pitchforks
+	if( GetConVarInt( g_hWeaponPitchfork ) > 0 )
+	{
+		for( new i = 0; i < GetConVarInt( g_hWeaponPitchfork ); i++ )
+		{
+			GetScriptName( "pitchfork", ScriptName );
+			SpawnMelee( ScriptName, Position, Angle );
+		}
+	}
+	
+	//Spawn Shovels
+	if( GetConVarInt( g_hWeaponShovel ) > 0 )
+	{
+		for( new i = 0; i < GetConVarInt( g_hWeaponShovel ); i++ )
+		{
+			GetScriptName( "shovel", ScriptName );
 			SpawnMelee( ScriptName, Position, Angle );
 		}
 	}
