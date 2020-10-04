@@ -54,12 +54,12 @@ L4D2的是下1.0.0.9h版本
 ~~安装顺序是无所谓的~~
 
 #### Metamod
-将 `mmsource-1.10.7-git970-linux.tar.gz` 的addons解压出来与 `./left4dead2/addons/` 合并
+将 `mmsource-1.10.7-git971-linux.tar.gz` 的addons解压出来与 `./left4dead2/addons/` 合并
 
 再将之前生成的 `metamod.vdf` 覆盖addons里的 `metamod.vdf` ~~（这个文件其实就是个路径设置）~~
 
 #### SourceMod
-同理将 `sourcemod-1.9.0-git6281-linux.tar.gz` 里的 `addons` 和 `cfg` 与`./left4dead2/addons/`和 `./left4dead2/cfg/` 合并
+同理将 `sourcemod-1.10.0-git6497-linux.tar.gz` 里的 `addons` 和 `cfg` 与`./left4dead2/addons/`和 `./left4dead2/cfg/` 合并
 
 #### L4DToolZ
 将 `l4dtoolz(L4D2)-1.0.0.9h.zip` 里的两个文件夹 `l4dtoolz` 和 `metamod` 放到 `./left4dead2/addons/` 里。
