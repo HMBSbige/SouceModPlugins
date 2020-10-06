@@ -3,8 +3,6 @@
 
 之前 Windows 的：https://www.jianshu.com/p/52c1635876e7
 
-没错，没钱续费了，干脆重新搞个 Linux 放家里
-
 ## 安装 SteamCMD
 https://developer.valvesoftware.com/wiki/SteamCMD#Linux
 ```
